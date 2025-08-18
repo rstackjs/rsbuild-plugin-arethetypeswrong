@@ -17,7 +17,7 @@ export async function createTarball(
     `${normalizeNpmPackageName(pkg.name)}-${pkg.version}.tgz`,
   );
 
-  const { agent } = await detect({ cwd: root, stopDir: root }) ?? { agent: "npm" };
+  const { agent } = await detect({ cwd: root }) ?? { agent: "npm" };
 
   const [command, args] = (function(): [string, string[]] {
     switch (agent) {
