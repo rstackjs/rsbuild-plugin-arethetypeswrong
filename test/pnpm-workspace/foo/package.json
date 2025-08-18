@@ -1,0 +1,12 @@
+{
+  "name": "test-pnpm-foo",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./src/non-exists.d.ts",
+  "files": [
+    "src/*"
+  ],
+  "publishConfig": {
+    "types": "./src/index.d.ts"
+  }
+}
