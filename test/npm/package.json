@@ -1,0 +1,10 @@
+{
+  "name": "test-npm",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./src/index.d.ts",
+  "files": [
+    "src/*"
+  ],
+  "packageManager": "npm@10.9.3"
+}

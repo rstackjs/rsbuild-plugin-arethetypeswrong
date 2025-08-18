@@ -17,19 +17,20 @@ export async function createTarball(
     `${normalizeNpmPackageName(pkg.name)}-${pkg.version}.tgz`,
   );
 
-  const { agent } = await detect({ cwd: root }) ?? { agent: "npm" };
+  const detectResult = await detect({ cwd: root });
 
   const [command, args] = (function(): [string, string[]] {
-    switch (agent) {
+    switch (detectResult?.agent) {
       case "yarn":
         // https://classic.yarnpkg.com/lang/en/docs/cli/pack/
-        return [agent, ["pack", "--filename", tarballPath]];
+        return ["yarn", ["pack", "--filename", tarballPath]];
       case "yarn@berry":
         // https://yarnpkg.com/cli/pack
         return ["yarn", ["pack", "--out", tarballPath]];
       case "npm":
       case "bun":
       case "deno":
+      case undefined:
         return ["npm", ["pack"]];
       case "pnpm":
       case "pnpm@6":
