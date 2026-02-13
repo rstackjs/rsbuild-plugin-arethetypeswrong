@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rspack-contrib/rsbuild-plugin-arethetypeswrong.git"
+    "url": "git+https://github.com/rstackjs/rsbuild-plugin-arethetypeswrong.git"
   },
   "license": "MIT",
   "type": "module",
