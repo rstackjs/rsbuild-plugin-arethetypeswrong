@@ -2,10 +2,14 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
-import { createRsbuild } from "@rsbuild/core";
-import { expect, test, vi } from "vitest";
+import { createRsbuild, logger } from "@rsbuild/core";
+import { beforeEach, expect, rs, test } from "@rstest/core";
 
 import { pluginAreTheTypesWrong } from "../../src";
+
+beforeEach(() => {
+  rs.restoreAllMocks();
+});
 
 test("should pass when no issues found", async () => {
   const rsbuild = await createRsbuild({
@@ -15,7 +19,7 @@ test("should pass when no issues found", async () => {
     },
   });
 
-  const error = vi.spyOn(rsbuild.logger, "error");
+  const error = rs.spyOn(logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -47,7 +51,7 @@ test("should be able to ignore resolution node16-esm and bundler", async () => {
     },
   });
 
-  const success = vi.spyOn(rsbuild.logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -80,7 +84,7 @@ test("should be able to ignore rule cjs-only-exports-default", async () => {
     },
   });
 
-  const success = vi.spyOn(rsbuild.logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -109,7 +113,7 @@ test("should not throw when enable: false", async () => {
     },
   });
 
-  const success = vi.spyOn(rsbuild.logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 

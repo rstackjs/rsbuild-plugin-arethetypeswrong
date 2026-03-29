@@ -29,7 +29,8 @@ export function getExitCode(analysis: CheckResult, opts?: RenderOptions): 0 | 1 
 
       const affectedKinds = allResolutionKinds.filter(rk => problemAffectsResolutionKind(problem, rk, analysis));
 
-      /* node:coverage ignore if -- @preserve */
+      /* v8 ignore next */
+      /* istanbul ignore next */
       if (affectedKinds.length === 0) {
         return true;
       }
