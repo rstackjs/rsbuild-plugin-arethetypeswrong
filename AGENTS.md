@@ -13,18 +13,17 @@ The plugin is built as an ESM package. Pay attention to `.js` vs `.ts` extension
 
 ## 🧪 Testing
 
-We use [Vitest](https://vitest.dev/) for testing. Tests are located in the `test/` directory.
+We use **rstest** (`@rstest/core`) for testing. Tests are located in the `test/` directory.
 
-- **Run All Tests:** `pnpm test`
-- **Run Tests with Coverage:** `vitest --coverage`
-- **Run a Single Test:** `vitest test/path-to-test/index.test.ts`
-- **Update Snapshots:** `vitest -u`
+- **Run All Tests:** `pnpm test` (runs with coverage)
+- **Run a Single Test:** `pnpm exec rstest test/path-to-test/index.test.ts`
+- **Update Snapshots:** `pnpm exec rstest -u`
 
 **Testing Guidelines:**
 
 - Most tests are integration tests that create an Rsbuild instance with the plugin and check the output.
 - Assertions typically involve spying on `logger.success` or `logger.error`, filtering the messages for `[arethetypeswrong]`, stripping VT control characters, and running snapshot tests (`toMatchSnapshot()`).
-- Use Vitest's `vi.spyOn(logger, "...")` to capture console outputs.
+- Use `rs.spyOn(logger, "...")` from `@rstest/core` to capture console outputs. Ensure to clean up mocks using `rs.restoreAllMocks()` in `beforeEach()`.
 
 ## 🧹 Linting & Formatting
 
