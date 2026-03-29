@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
-import { createRsbuild, logger } from "@rsbuild/core";
+import { createRsbuild } from "@rsbuild/core";
 import { expect, test, vi } from "vitest";
 
 import { pluginAreTheTypesWrong } from "../../src";
@@ -15,7 +15,7 @@ test("should throw when cannot resolve types", async () => {
     },
   });
 
-  const error = vi.spyOn(logger, "error");
+  const error = vi.spyOn(rsbuild.logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -47,7 +47,7 @@ test("should be able to ignore resolution", async () => {
     },
   });
 
-  const error = vi.spyOn(logger, "error");
+  const error = vi.spyOn(rsbuild.logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -78,7 +78,7 @@ test("should not throw when no-resolution is ignored", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = vi.spyOn(rsbuild.logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -107,7 +107,7 @@ test("should not throw when enable: false", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = vi.spyOn(rsbuild.logger, "success");
 
   const { close } = await rsbuild.build();
 
