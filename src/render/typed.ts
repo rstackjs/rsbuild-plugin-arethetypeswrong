@@ -18,17 +18,15 @@ import {
 } from "@arethetypeswrong/core/problems";
 import { allResolutionKinds, getResolutionOption, groupProblemsByKind } from "@arethetypeswrong/core/utils";
 import Table from "cli-table3";
-import { marked } from "marked";
-import TerminalRenderer from "marked-terminal";
 import color from "picocolors";
 
 import { moduleKinds, problemFlags, resolutionKinds } from "../problemUtils.js";
 import type { RenderOptions } from "./index.js";
 
-export async function renderTyped(
+export function renderTyped(
   analysis: core.Analysis,
   { emoji = true, summary = true, ignoreRules = [], ignoreResolutions = [] }: RenderOptions,
-): Promise<string> {
+): string {
   let output = "";
   const problems = analysis.problems.filter(
     (problem) => !ignoreRules || !ignoreRules.includes(problemFlags[problem.kind]),
@@ -38,9 +36,6 @@ export async function renderTyped(
   const ignoredResolutions = allResolutionKinds.filter((kind) => ignoreResolutions.includes(kind));
   const resolutions = requiredResolutions.concat(ignoredResolutions);
   const entrypoints = Object.keys(analysis.entrypoints);
-  marked.setOptions({
-    renderer: new TerminalRenderer(),
-  });
 
   out(`[arethetypeswrong] ${analysis.packageName} v${analysis.packageVersion}`);
   out();
@@ -68,20 +63,31 @@ export async function renderTyped(
   if (summary) {
     const defaultSummary = !emoji ? " No problems found" : " No problems found 🌟";
     const grouped = groupProblemsByKind(problems);
-    const summaryTexts = await Promise.all(
-      Object.entries(grouped).map(async ([kind, kindProblems]) => {
-        const info = problemKindInfo[kind as core.ProblemKind];
-        const affectsRequiredResolution = kindProblems.some((p) =>
-          requiredResolutions.some((r) => problemAffectsResolutionKind(p, r, analysis))
+    const summaryTexts = Object.entries(grouped).map(([kind, kindProblems]) => {
+      const info = problemKindInfo[kind as core.ProblemKind];
+      const affectsRequiredResolution = kindProblems.some((p) =>
+        requiredResolutions.some((r) => problemAffectsResolutionKind(p, r, analysis))
+      );
+
+      let description = `${info.description}${
+        info.details ? ` Use \`-f json\` to see ${info.details}.` : ""
+      } ${info.docsUrl}`;
+
+      // Simple markdown replacement for terminal readability
+      description = description
+        // Inline code blocks (e.g., `code`) -> highlighted code
+        .replace(/`([^`]+)`/g, (_: string, code: string) => color.cyan(code))
+        // Links (e.g., [text](url)) -> text (url)
+        // Using negative lookbehind to avoid matching ANSI escape sequences like \x1b[36m
+        .replace(
+          /(?<!\x1b)\[([^\]]+)\]\(([^)]+)\)/g,
+          (_: string, text: string, url: string) => `${color.bold(text)} (${color.blue(color.underline(url))})`,
         );
-        const description = await marked(
-          `${info.description}${info.details ? ` Use \`-f json\` to see ${info.details}.` : ""} ${info.docsUrl}`,
-        );
-        return `${affectsRequiredResolution ? "" : "(ignored per resolution) "}${
-          emoji ? `${info.emoji} ` : ""
-        }${description}`;
-      }),
-    );
+
+      return `${affectsRequiredResolution ? "" : "(ignored per resolution) "}${
+        emoji ? `${info.emoji} ` : ""
+      }${description}\n\n`;
+    });
 
     out(summaryTexts.join("") || defaultSummary);
   }

@@ -58,7 +58,7 @@ export const pluginAreTheTypesWrong = (
 
         const { render } = await import("./render/index.js");
 
-        const message = await render(result, options.areTheTypesWrongOptions ?? {});
+        const message = render(result, options.areTheTypesWrongOptions ?? {});
 
         const { getExitCode } = await import("./getExitCode.js");
 
