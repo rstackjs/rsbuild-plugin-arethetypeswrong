@@ -28,7 +28,7 @@ test("should failed on fallback-condition", async () => {
   ).toMatchSnapshot();
 });
 
-test.skip("should be able to ignore resolution node16-*", async () => {
+test("should be able to ignore resolution node16-* and bundler", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
@@ -38,6 +38,7 @@ test.skip("should be able to ignore resolution node16-*", async () => {
             ignoreResolutions: [
               "node16-cjs",
               "node16-esm",
+              "bundler",
             ],
           },
         }),

@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolution node16-esm 1`] = `
+[
+  "[arethetypeswrong] test-named-exports v0.0.0
+
+ (ignoring resolutions: 'node16-esm')
+
+(ignored per resolution) 🕵️ TypeScript allows ESM named imports of the properties of this CommonJS module, but they will crash at runtime because they don’t exist or can’t be statically detected by Node.js in the JavaScript file. Use -f json to see the list of exports TypeScript can see but Node.js cannot. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/NamedExports.md
+
+
+┌───────────────────┬────────────────────────────┐
+│                   │ "test-named-exports"       │
+├───────────────────┼────────────────────────────┤
+│ node10            │ 🟢                         │
+├───────────────────┼────────────────────────────┤
+│ node16 (from CJS) │ 🟢 (CJS)                   │
+├───────────────────┼────────────────────────────┤
+│ bundler           │ 🟢                         │
+├───────────────────┼────────────────────────────┤
+│ node16 (from ESM) │ (ignored) 🕵️ Named exports │
+└───────────────────┴────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule named-exports 1`] = `
 [
   "[arethetypeswrong] test-named-exports v0.0.0

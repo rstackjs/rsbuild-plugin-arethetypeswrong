@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolution node16-* and bundler 1`] = `
+[
+  "[arethetypeswrong] test-fallback-condition v0.0.0
+
+ (ignoring resolutions: 'node16-cjs', 'node16-esm', 'bundler')
+
+(ignored per resolution) 🐛 Import resolved to types through a conditional package.json export, but only after failing to resolve through an earlier condition. This behavior is a TypeScript bug (https://github.com/microsoft/TypeScript/issues/50762). It may misrepresent the runtime behavior of this import and should not be relied upon. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FallbackCondition.md
+
+
+┌───────────────────┬──────────────────────────────────────┐
+│                   │ "test-fallback-condition"            │
+├───────────────────┼──────────────────────────────────────┤
+│ node10            │ 🟢                                   │
+├───────────────────┼──────────────────────────────────────┤
+│ node16 (from CJS) │ (ignored) 🟢 (CJS)                   │
+├───────────────────┼──────────────────────────────────────┤
+│ node16 (from ESM) │ (ignored) 🐛 Used fallback condition │
+├───────────────────┼──────────────────────────────────────┤
+│ bundler           │ (ignored) 🐛 Used fallback condition │
+└───────────────────┴──────────────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule fallback-condition 1`] = `
 [
   "[arethetypeswrong] test-fallback-condition v0.0.0

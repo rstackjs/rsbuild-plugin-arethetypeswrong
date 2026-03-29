@@ -30,7 +30,7 @@ test("should throw when has false CJS", async () => {
   expect(existsSync(path.join(import.meta.dirname, "test-false-cjs-0.0.0.tgz"))).toBeFalsy();
 });
 
-test.skip("should be able to ignore resolutions node16-esm", async () => {
+test("should be able to ignore resolutions node16-esm", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {

@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolution node16-*, node10, bundler 1`] = `
+[
+  "[arethetypeswrong] test-missing-export-equals v0.0.0
+
+ (ignoring resolutions: 'node16-cjs', 'node16-esm', 'node10', 'bundler')
+
+(ignored per resolution) ❓ The JavaScript appears to set both module.exports and module.exports.default for improved compatibility, but the types only reflect the latter (by using export default). This will cause TypeScript under the node16 module mode to think an extra .default property access is required, which will work at runtime but is not necessary. These types should export = an object with a default property instead of using export default. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/MissingExportEquals.md
+
+
+┌───────────────────┬─────────────────────────────────┐
+│                   │ "test-missing-export-equals"    │
+├───────────────────┼─────────────────────────────────┤
+│ node10            │ (ignored) ❓ Missing \`export =\` │
+├───────────────────┼─────────────────────────────────┤
+│ node16 (from CJS) │ (ignored) ❓ Missing \`export =\` │
+├───────────────────┼─────────────────────────────────┤
+│ node16 (from ESM) │ (ignored) ❓ Missing \`export =\` │
+├───────────────────┼─────────────────────────────────┤
+│ bundler           │ (ignored) ❓ Missing \`export =\` │
+└───────────────────┴─────────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule missing-export-equals 1`] = `
 [
   "[arethetypeswrong] test-missing-export-equals v0.0.0

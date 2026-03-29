@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolution node16-* 1`] = `
+[
+  "[arethetypeswrong] test-internal-resolution-error v0.0.0
+
+ (ignoring resolutions: 'node16-cjs', 'node16-esm')
+
+(ignored per resolution) 🥴 Import found in a type declaration file failed to resolve. Either this indicates that runtime resolution errors will occur, or (more likely) the types misrepresent the contents of the JavaScript files. Use -f json to see the imports that failed to resolve. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/InternalResolutionError.md
+
+
+┌───────────────────┬────────────────────────────────────────┐
+│                   │ "test-internal-resolution-error"       │
+├───────────────────┼────────────────────────────────────────┤
+│ node10            │ 🟢                                     │
+├───────────────────┼────────────────────────────────────────┤
+│ bundler           │ 🟢                                     │
+├───────────────────┼────────────────────────────────────────┤
+│ node16 (from CJS) │ (ignored) 🟢 (CJS)                     │
+├───────────────────┼────────────────────────────────────────┤
+│ node16 (from ESM) │ (ignored) 🥴 Internal resolution error │
+└───────────────────┴────────────────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule internal-resolution-error 1`] = `
 [
   "[arethetypeswrong] test-internal-resolution-error v0.0.0

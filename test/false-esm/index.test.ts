@@ -31,7 +31,7 @@ test("should throw when has false ESM", async () => {
 });
 
 // TODO: fix this
-test.skip("should pass when all thrown resolution is disabled", async () => {
+test("should pass when all thrown resolution is disabled", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
@@ -39,7 +39,7 @@ test.skip("should pass when all thrown resolution is disabled", async () => {
         pluginAreTheTypesWrong({
           areTheTypesWrongOptions: {
             ignoreResolutions: [
-              "node16-esm",
+              "node16-cjs",
             ],
           },
         }),

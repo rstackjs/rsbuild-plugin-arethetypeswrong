@@ -30,7 +30,7 @@ test("should throw when missing export =", async () => {
   expect(existsSync(path.join(import.meta.dirname, "test-missing-export-equals-0.0.0.tgz"))).toBeFalsy();
 });
 
-test.skip("should be able to ignore resolution node16-*", async () => {
+test("should be able to ignore resolution node16-*, node10, bundler", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
@@ -40,6 +40,8 @@ test.skip("should be able to ignore resolution node16-*", async () => {
             ignoreResolutions: [
               "node16-cjs",
               "node16-esm",
+              "node10",
+              "bundler",
             ],
           },
         }),
