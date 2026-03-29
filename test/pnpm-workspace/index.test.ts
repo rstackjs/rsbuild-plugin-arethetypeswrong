@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
-import { createRsbuild, logger } from "@rsbuild/core";
+import { createRsbuild } from "@rsbuild/core";
 import { expect, test, vi } from "vitest";
 
 import { pluginAreTheTypesWrong } from "../../src";
@@ -15,7 +15,7 @@ test("should run arethetypeswrong as expected", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = vi.spyOn(rsbuild.logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -44,7 +44,7 @@ test("should run arethetypeswrong without emoji", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = vi.spyOn(rsbuild.logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -74,7 +74,7 @@ test("should run arethetypeswrong without summary", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = vi.spyOn(rsbuild.logger, "success");
 
   const { close } = await rsbuild.build();
 
