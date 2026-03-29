@@ -1,11 +1,15 @@
-import { existsSync } from "node:fs";
+import {  existsSync } from "node:fs";
 import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
 import { createRsbuild, logger } from "@rsbuild/core";
-import { expect, test, vi } from "vitest";
+import { expect, test, rs, beforeEach } from "@rstest/core";
 
 import { pluginAreTheTypesWrong } from "../../src";
+
+beforeEach(() => {
+  rs.restoreAllMocks();
+});
 
 test("should detect fallback condition usage", async () => {
   const rsbuild = await createRsbuild({
@@ -15,7 +19,7 @@ test("should detect fallback condition usage", async () => {
     },
   });
 
-  const error = vi.spyOn(logger, "error");
+  const error = rs.spyOn(logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -46,7 +50,7 @@ test("should be able to ignore resolution node16-esm", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -79,7 +83,7 @@ test("should be able to ignore rule named-exports", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -108,7 +112,7 @@ test("should not throw when enable: false", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
