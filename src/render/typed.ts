@@ -78,8 +78,9 @@ export function renderTyped(
         // Inline code blocks (e.g., `code`) -> highlighted code
         .replace(/`([^`]+)`/g, (_: string, code: string) => color.cyan(code))
         // Links (e.g., [text](url)) -> text (url)
+        // Using negative lookbehind to avoid matching ANSI escape sequences like \x1b[36m
         .replace(
-          /\[([^\]]+)\]\(([^)]+)\)/g,
+          /(?<!\x1b)\[([^\]]+)\]\(([^)]+)\)/g,
           (_: string, text: string, url: string) => `${color.bold(text)} (${color.blue(color.underline(url))})`,
         );
 
