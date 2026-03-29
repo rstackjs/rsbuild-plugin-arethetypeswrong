@@ -56,7 +56,10 @@ export function renderTyped(
   }
   if (ignoreResolutions && ignoreResolutions.length) {
     out(
-      styleText("gray", ` (ignoring resolutions: ${ignoreResolutions.map((resolution) => `'${resolution}'`).join(", ")})\n`),
+      styleText(
+        "gray",
+        ` (ignoring resolutions: ${ignoreResolutions.map((resolution) => `'${resolution}'`).join(", ")})\n`,
+      ),
     );
   }
 
@@ -81,7 +84,8 @@ export function renderTyped(
         // Using negative lookbehind to avoid matching ANSI escape sequences like \x1b[36m
         .replace(
           /(?<!\x1b)\[([^\]]+)\]\(([^)]+)\)/g,
-          (_: string, text: string, url: string) => `${styleText("bold", text)} (${styleText("blue", styleText("underline", url))})`,
+          (_: string, text: string, url: string) =>
+            `${styleText("bold", text)} (${styleText("blue", styleText("underline", url))})`,
         );
 
       return `${affectsRequiredResolution ? "" : "(ignored per resolution) "}${
