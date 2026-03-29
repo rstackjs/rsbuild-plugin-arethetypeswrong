@@ -43,12 +43,17 @@ export async function createTarball(
     nodeOptions: {
       cwd: root,
     },
+    throwOnError: true,
   });
 
   return {
     path: tarballPath,
     async [Symbol.asyncDispose]() {
-      return fs.unlink(tarballPath);
+      try {
+        await fs.unlink(tarballPath);
+      } catch {
+        // ignore unlink errors to avoid masking original errors
+      }
     },
   };
 }
