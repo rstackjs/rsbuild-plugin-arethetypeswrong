@@ -27,14 +27,15 @@ export async function createTarball(
       case "yarn@berry":
         // https://yarnpkg.com/cli/pack
         return ["yarn", ["pack", "--out", tarballPath]];
+      case "pnpm":
+      case "pnpm@6":
+        return ["pnpm", ["pack"]];
       case "npm":
       case "bun":
       case "deno":
       case undefined:
+      default:
         return ["npm", ["pack"]];
-      case "pnpm":
-      case "pnpm@6":
-        return ["pnpm", ["pack"]];
     }
   })();
 
