@@ -31,7 +31,7 @@ export const pluginAreTheTypesWrong = (
       handler: async ({ isFirstCompile, isWatch }) => {
         // Only run on the first compile in watch mode, or on a single build
         /* v8 ignore next */
-          /* istanbul ignore next */
+        /* istanbul ignore next */
         if (!isFirstCompile) {
           return;
         }

@@ -1,9 +1,9 @@
-import {  existsSync } from "node:fs";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
 import { createRsbuild, logger } from "@rsbuild/core";
-import { expect, test, rs, beforeEach } from "@rstest/core";
+import { beforeEach, expect, rs, test } from "@rstest/core";
 
 import { pluginAreTheTypesWrong } from "../../src";
 
