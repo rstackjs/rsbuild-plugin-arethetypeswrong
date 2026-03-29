@@ -20,6 +20,7 @@ export default defineConfig({
       },
     },
 
+    clearMocks: true,
     silent: "passed-only",
   },
 });

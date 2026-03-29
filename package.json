@@ -68,5 +68,14 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "vitest": {
+        "peerDependencies": {
+          "@vitest/coverage-v8": "*"
+        }
+      }
+    }
   }
 }
