@@ -132,7 +132,7 @@ export async function renderTyped(
 
   return output.trimEnd();
 
-  function out(s: string = "") {
+  function out(s = "") {
     output += s + "\n";
   }
 }
