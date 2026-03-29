@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { RsbuildPlugin } from "@rsbuild/core";
+import { logger, type RsbuildPlugin } from "@rsbuild/core";
 
 import type { RenderOptions } from "./render/index.js";
 
@@ -25,12 +25,11 @@ export const pluginAreTheTypesWrong = (
       return;
     }
 
-    const logger = api.logger;
-
     api.onAfterBuild({
       handler: async ({ isFirstCompile, isWatch }) => {
         // Only run on the first compile in watch mode, or on a single build
-        /* node:coverage ignore if -- @preserve */
+        /* v8 ignore next */
+        /* istanbul ignore next */
         if (!isFirstCompile) {
           return;
         }
@@ -66,11 +65,13 @@ export const pluginAreTheTypesWrong = (
         const hasErrors = exitCode !== 0;
         if (hasErrors) {
           logger.error(message);
-          /* node:coverage ignore next -- @preserve */
+          /* v8 ignore next */
+          /* istanbul ignore next */
           if (!isWatch) {
             throw new Error("arethetypeswrong failed!");
           }
-          /* node:coverage ignore next -- @preserve */
+          /* v8 ignore next */
+          /* istanbul ignore next */
           return;
         }
         logger.success(message);

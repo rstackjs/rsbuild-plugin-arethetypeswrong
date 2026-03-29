@@ -18,7 +18,7 @@ import {
 } from "@arethetypeswrong/core/problems";
 import { allResolutionKinds, getResolutionOption, groupProblemsByKind } from "@arethetypeswrong/core/utils";
 import Table from "cli-table3";
-import color from "picocolors";
+import { styleText } from "node:util";
 
 import { moduleKinds, problemFlags, resolutionKinds } from "../problemUtils.js";
 import type { RenderOptions } from "./index.js";
@@ -52,11 +52,14 @@ export function renderTyped(
   }
 
   if (ignoreRules && ignoreRules.length) {
-    out(color.gray(` (ignoring rules: ${ignoreRules.map((rule) => `'${rule}'`).join(", ")})\n`));
+    out(styleText("gray", ` (ignoring rules: ${ignoreRules.map((rule) => `'${rule}'`).join(", ")})\n`));
   }
   if (ignoreResolutions && ignoreResolutions.length) {
     out(
-      color.gray(` (ignoring resolutions: ${ignoreResolutions.map((resolution) => `'${resolution}'`).join(", ")})\n`),
+      styleText(
+        "gray",
+        ` (ignoring resolutions: ${ignoreResolutions.map((resolution) => `'${resolution}'`).join(", ")})\n`,
+      ),
     );
   }
 
@@ -76,12 +79,13 @@ export function renderTyped(
       // Simple markdown replacement for terminal readability
       description = description
         // Inline code blocks (e.g., `code`) -> highlighted code
-        .replace(/`([^`]+)`/g, (_: string, code: string) => color.cyan(code))
+        .replace(/`([^`]+)`/g, (_: string, code: string) => styleText("cyan", code))
         // Links (e.g., [text](url)) -> text (url)
         // Using negative lookbehind to avoid matching ANSI escape sequences like \x1b[36m
         .replace(
           /(?<!\x1b)\[([^\]]+)\]\(([^)]+)\)/g,
-          (_: string, text: string, url: string) => `${color.bold(text)} (${color.blue(color.underline(url))})`,
+          (_: string, text: string, url: string) =>
+            `${styleText("bold", text)} (${styleText("blue", styleText("underline", url))})`,
         );
 
       return `${affectsRequiredResolution ? "" : "(ignored per resolution) "}${
@@ -97,7 +101,7 @@ export function renderTyped(
   );
   const entrypointHeaders = entrypoints.map((s, i) => {
     const hasProblems = problems.some((p) => problemAffectsEntrypoint(p, s, analysis));
-    return color.bold((hasProblems ? color.redBright : color.greenBright)(entrypointNames[i]));
+    return styleText("bold", styleText(hasProblems ? "redBright" : "greenBright", entrypointNames[i]));
   });
 
   const getCellContents = (subpath: string, resolutionKind: core.ResolutionKind) => {

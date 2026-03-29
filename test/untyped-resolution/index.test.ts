@@ -3,9 +3,13 @@ import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
 import { createRsbuild, logger } from "@rsbuild/core";
-import { expect, test, vi } from "vitest";
+import { beforeEach, expect, rs, test } from "@rstest/core";
 
 import { pluginAreTheTypesWrong } from "../../src";
+
+beforeEach(() => {
+  rs.restoreAllMocks();
+});
 
 test("should throw when does resolve to types", async () => {
   const rsbuild = await createRsbuild({
@@ -15,7 +19,7 @@ test("should throw when does resolve to types", async () => {
     },
   });
 
-  const error = vi.spyOn(logger, "error");
+  const error = rs.spyOn(logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -46,7 +50,7 @@ test("should pass when all thrown resolution is disabled", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -80,7 +84,7 @@ test("should be able to ignore resolution", async () => {
     },
   });
 
-  const error = vi.spyOn(logger, "error");
+  const error = rs.spyOn(logger, "error");
 
   await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
 
@@ -111,7 +115,7 @@ test("should be able to ignore rule untyped-resolution", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -142,7 +146,7 @@ test("should not throw when enable: false", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 

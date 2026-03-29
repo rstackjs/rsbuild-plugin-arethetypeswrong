@@ -3,9 +3,13 @@ import path from "node:path";
 import { stripVTControlCharacters } from "node:util";
 
 import { createRsbuild, logger } from "@rsbuild/core";
-import { expect, test, vi } from "vitest";
+import { beforeEach, expect, rs, test } from "@rstest/core";
 
 import { pluginAreTheTypesWrong } from "../../src";
+
+beforeEach(() => {
+  rs.restoreAllMocks();
+});
 
 test("should run arethetypeswrong as expected", async () => {
   const rsbuild = await createRsbuild({
@@ -15,7 +19,7 @@ test("should run arethetypeswrong as expected", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -44,7 +48,7 @@ test("should run arethetypeswrong without emoji", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
@@ -74,7 +78,7 @@ test("should run arethetypeswrong without summary", async () => {
     },
   });
 
-  const success = vi.spyOn(logger, "success");
+  const success = rs.spyOn(logger, "success");
 
   const { close } = await rsbuild.build();
 
