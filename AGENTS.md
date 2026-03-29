@@ -21,6 +21,7 @@ We use [Vitest](https://vitest.dev/) for testing. Tests are located in the `test
 - **Update Snapshots:** `vitest -u`
 
 **Testing Guidelines:**
+
 - Most tests are integration tests that create an Rsbuild instance with the plugin and check the output.
 - Assertions typically involve spying on `logger.success` or `logger.error`, filtering the messages for `[arethetypeswrong]`, stripping VT control characters, and running snapshot tests (`toMatchSnapshot()`).
 - Use Vitest's `vi.spyOn(logger, "...")` to capture console outputs.
