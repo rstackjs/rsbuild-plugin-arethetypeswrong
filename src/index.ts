@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { RsbuildPlugin } from "@rsbuild/core";
+import { logger, type RsbuildPlugin } from "@rsbuild/core";
 
 import type { RenderOptions } from "./render/index.js";
 
@@ -24,8 +24,6 @@ export const pluginAreTheTypesWrong = (
     if (options.enable === false) {
       return;
     }
-
-    const logger = api.logger;
 
     api.onAfterBuild({
       handler: async ({ isFirstCompile, isWatch }) => {
