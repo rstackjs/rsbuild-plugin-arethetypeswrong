@@ -10,6 +10,8 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
  */
 
 import type { CheckResult } from "@arethetypeswrong/core";
+import { problemAffectsResolutionKind } from "@arethetypeswrong/core/problems";
+import { allResolutionKinds } from "@arethetypeswrong/core/utils";
 import { problemFlags } from "./problemUtils.js";
 import type { RenderOptions } from "./render/index.js";
 
@@ -21,10 +23,19 @@ export function getExitCode(analysis: CheckResult, opts?: RenderOptions): 0 | 1 
   const ignoreResolutions = opts?.ignoreResolutions ?? [];
   return analysis.problems.some((problem) => {
       const notRuleIgnored = !ignoreRules.includes(problemFlags[problem.kind]);
-      const notResolutionIgnored = "resolutionKind" in problem
-        ? !ignoreResolutions.includes(problem.resolutionKind)
-        : true;
-      return notRuleIgnored && notResolutionIgnored;
+      if (!notRuleIgnored) {
+        return false;
+      }
+
+      const affectedKinds = allResolutionKinds.filter(rk => problemAffectsResolutionKind(problem, rk, analysis));
+
+      /* node:coverage ignore if -- @preserve */
+      if (affectedKinds.length === 0) {
+        return true;
+      }
+
+      const notResolutionIgnored = affectedKinds.some(rk => !ignoreResolutions.includes(rk));
+      return notResolutionIgnored;
     })
     ? 1
     : 0;

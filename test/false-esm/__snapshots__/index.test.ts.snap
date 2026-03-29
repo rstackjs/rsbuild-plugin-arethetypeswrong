@@ -21,6 +21,29 @@ exports[`should be able to ignore rule false-esm 1`] = `
 ]
 `;
 
+exports[`should pass when all thrown resolution is disabled 1`] = `
+[
+  "[arethetypeswrong] test-false-esm v0.0.0
+
+ (ignoring resolutions: 'node16-cjs')
+
+(ignored per resolution) 👺 Import resolved to an ESM type declaration file, but a CommonJS JavaScript file. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseESM.md
+
+
+┌───────────────────┬──────────────────────────────────┐
+│                   │ "test-false-esm"                 │
+├───────────────────┼──────────────────────────────────┤
+│ node10            │ 🟢                               │
+├───────────────────┼──────────────────────────────────┤
+│ node16 (from ESM) │ 🟢 (ESM)                         │
+├───────────────────┼──────────────────────────────────┤
+│ bundler           │ 🟢                               │
+├───────────────────┼──────────────────────────────────┤
+│ node16 (from CJS) │ (ignored) 👺 Masquerading as ESM │
+└───────────────────┴──────────────────────────────────┘",
+]
+`;
+
 exports[`should throw when has false ESM 2`] = `
 [
   "[arethetypeswrong] test-false-esm v0.0.0

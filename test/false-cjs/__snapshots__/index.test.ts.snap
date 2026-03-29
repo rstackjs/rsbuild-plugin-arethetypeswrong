@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolutions node16-esm 1`] = `
+[
+  "[arethetypeswrong] test-false-cjs v0.0.0
+
+ (ignoring resolutions: 'node16-esm')
+
+(ignored per resolution) 🎭 Import resolved to a CommonJS type declaration file, but an ESM JavaScript file. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
+
+
+┌───────────────────┬──────────────────────────────────┐
+│                   │ "test-false-cjs"                 │
+├───────────────────┼──────────────────────────────────┤
+│ node10            │ 🟢                               │
+├───────────────────┼──────────────────────────────────┤
+│ node16 (from CJS) │ 🟢 (CJS)                         │
+├───────────────────┼──────────────────────────────────┤
+│ bundler           │ 🟢                               │
+├───────────────────┼──────────────────────────────────┤
+│ node16 (from ESM) │ (ignored) 🎭 Masquerading as CJS │
+└───────────────────┴──────────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule false-cjs 1`] = `
 [
   "[arethetypeswrong] test-false-cjs v0.0.0

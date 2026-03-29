@@ -30,7 +30,7 @@ test("should pass when no issues found", async () => {
   expect(existsSync(path.join(import.meta.dirname, "test-cjs-only-exports-default-0.0.0.tgz"))).toBeFalsy();
 });
 
-test.skip("should be able to ignore resolution node16-esm and bundler", async () => {
+test("should be able to ignore resolution node16-esm and bundler", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {

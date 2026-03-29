@@ -1,5 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should be able to ignore resolution node16-* 1`] = `
+[
+  "[arethetypeswrong] test-unexpected-module-syntax v0.0.0
+
+ (ignoring resolutions: 'node16-cjs', 'node16-esm')
+
+(ignored per resolution) 🚭 Syntax detected in the module is incompatible with the module kind according to the package.json or file extension. This is an error in Node and may cause problems in some bundlers. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/UnexpectedModuleSyntax.md
+
+
+┌───────────────────┬───────────────────────────────────────┐
+│                   │ "test-unexpected-module-syntax"       │
+├───────────────────┼───────────────────────────────────────┤
+│ node10            │ 🟢                                    │
+├───────────────────┼───────────────────────────────────────┤
+│ bundler           │ 🟢                                    │
+├───────────────────┼───────────────────────────────────────┤
+│ node16 (from CJS) │ (ignored) 🚭 Unexpected module syntax │
+├───────────────────┼───────────────────────────────────────┤
+│ node16 (from ESM) │ (ignored) 🚭 Unexpected module syntax │
+└───────────────────┴───────────────────────────────────────┘",
+]
+`;
+
 exports[`should be able to ignore rule unexpected-module-syntax 1`] = `
 [
   "[arethetypeswrong] test-unexpected-module-syntax v0.0.0

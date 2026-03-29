@@ -30,7 +30,7 @@ test("should detect fallback condition usage", async () => {
   expect(existsSync(path.join(import.meta.dirname, "test-named-exports-0.0.0.tgz"))).toBeFalsy();
 });
 
-test.skip("should be able to ignore resolution node16-esm", async () => {
+test("should be able to ignore resolution node16-esm", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {

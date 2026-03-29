@@ -30,7 +30,7 @@ test("should throw when have unexpected module syntax", async () => {
   expect(existsSync(path.join(import.meta.dirname, "test-unexpected-module-syntax-0.0.0.tgz"))).toBeFalsy();
 });
 
-test.skip("should be able to ignore resolution node16-*", async () => {
+test("should be able to ignore resolution node16-*", async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
