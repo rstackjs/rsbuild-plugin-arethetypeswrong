@@ -34,16 +34,16 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@microsoft/api-extractor": "^7.57.7",
-    "@rsbuild/core": "2.0.0-beta.10",
-    "@rslib/core": "^0.20.2",
-    "@rslint/core": "^0.3.3",
-    "@rstest/adapter-rslib": "^0.2.1",
-    "@rstest/core": "^0.9.5",
-    "@rstest/coverage-istanbul": "^0.3.0",
-    "@types/node": "^24.12.0",
+    "@microsoft/api-extractor": "^7.58.1",
+    "@rsbuild/core": "2.0.0-rc.0",
+    "@rslib/core": "^0.20.3",
+    "@rslint/core": "^0.3.4",
+    "@rstest/adapter-rslib": "^0.2.2",
+    "@rstest/core": "^0.9.6",
+    "@rstest/coverage-istanbul": "^0.3.1",
+    "@types/node": "^24.12.2",
     "cli-table3": "^0.6.5",
-    "dprint": "^0.53.1",
+    "dprint": "^0.53.2",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
     "package-manager-detector": "^1.6.0",
@@ -62,7 +62,7 @@
   },
   "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
   "engines": {
-    "node": ">=20.12.0"
+    "node": ">=20.20.2"
   },
   "publishConfig": {
     "access": "public",
