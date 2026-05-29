@@ -34,22 +34,22 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
-    "@microsoft/api-extractor": "^7.58.1",
-    "@rsbuild/core": "2.0.0-rc.0",
-    "@rslib/core": "^0.20.3",
-    "@rslint/core": "^0.3.4",
-    "@rstest/adapter-rslib": "^0.2.2",
-    "@rstest/core": "^0.9.6",
-    "@rstest/coverage-istanbul": "^0.3.1",
-    "@types/node": "^24.12.2",
+    "@microsoft/api-extractor": "^7.58.7",
+    "@rsbuild/core": "2.0.8",
+    "@rslib/core": "^0.21.5",
+    "@rslint/core": "^0.5.3",
+    "@rstest/adapter-rslib": "^0.10.2",
+    "@rstest/core": "^0.10.2",
+    "@rstest/coverage-istanbul": "^0.10.2",
+    "@types/node": "^24.12.4",
     "cli-table3": "^0.6.5",
-    "dprint": "^0.53.2",
+    "dprint": "^0.54.0",
     "husky": "^9.1.7",
     "nano-staged": "^1.0.2",
     "package-manager-detector": "^1.6.0",
     "rsbuild-plugin-publint": "^0.3.4",
-    "tinyexec": "^1.0.4",
-    "typescript": "^6.0.2"
+    "tinyexec": "^1.2.2",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.0.0 || ^2.0.0-0",
@@ -60,7 +60,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "packageManager": "pnpm@10.34.1+sha512.b58fbde6dca66a929538021581f648b4570b6ca19b18e7cbd7f2c07a7b24454155388dacdf08f2af3678e88a6d1fe04f9d609df24bf51735a060ea041b374ab7",
   "engines": {
     "node": ">=20.20.2"
   },
