@@ -21,7 +21,7 @@
   "scripts": {
     "build": "rslib",
     "lint": "rslint",
-    "prepare": "husky && rslib",
+    "prepare": "husky",
     "test": "rstest --coverage"
   },
   "nano-staged": {
