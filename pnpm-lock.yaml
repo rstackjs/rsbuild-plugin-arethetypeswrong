@@ -9,29 +9,29 @@ importers:
   .:
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: ^0.18.2
-        version: 0.18.2
+        specifier: ^0.18.3
+        version: 0.18.3
       '@microsoft/api-extractor':
         specifier: ^7.58.7
         version: 7.58.7(@types/node@24.12.4)
       '@rsbuild/core':
-        specifier: 2.0.8
-        version: 2.0.8(core-js@3.47.0)
+        specifier: 2.0.9
+        version: 2.0.9
       '@rslib/core':
-        specifier: ^0.21.5
-        version: 0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(core-js@3.47.0)(typescript@6.0.3)
+        specifier: ^0.22.0
+        version: 0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(typescript@6.0.3)
       '@rslint/core':
         specifier: ^0.5.3
-        version: 0.5.3(jiti@2.6.1)
+        version: 0.5.3
       '@rstest/adapter-rslib':
-        specifier: ^0.10.2
-        version: 0.10.2(@rslib/core@0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(core-js@3.47.0)(typescript@6.0.3))(@rstest/core@0.10.2(core-js@3.47.0))(typescript@6.0.3)
+        specifier: ^0.10.3
+        version: 0.10.3(@rslib/core@0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(typescript@6.0.3))(@rstest/core@0.10.3)(typescript@6.0.3)
       '@rstest/core':
-        specifier: ^0.10.2
-        version: 0.10.2(core-js@3.47.0)
+        specifier: ^0.10.3
+        version: 0.10.3
       '@rstest/coverage-istanbul':
-        specifier: ^0.10.2
-        version: 0.10.2(@rstest/core@0.10.2(core-js@3.47.0))
+        specifier: ^0.10.3
+        version: 0.10.3(@rstest/core@0.10.3)
       '@types/node':
         specifier: ^24.12.4
         version: 24.12.4
@@ -52,10 +52,10 @@ importers:
         version: 1.6.0
       rsbuild-plugin-publint:
         specifier: ^0.3.4
-        version: 0.3.4(@rsbuild/core@2.0.8(core-js@3.47.0))
+        version: 0.3.4(@rsbuild/core@2.0.9)
       tinyexec:
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.3
+        version: 1.2.3
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -65,8 +65,8 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/core@0.18.2':
-    resolution: {integrity: sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==}
+  '@arethetypeswrong/core@0.18.3':
+    resolution: {integrity: sha512-sWBB/tdIktaT5xMq0Dz6CJyqcf6oMNdmiKiuPU1lWoJLTL6gjRSsksBuSgqot21hylkklBQY1wiSu+PkZhW7sw==}
     engines: {node: '>=20'}
 
   '@ast-grep/napi-darwin-arm64@0.37.0':
@@ -255,8 +255,18 @@ packages:
       core-js:
         optional: true
 
-  '@rslib/core@0.21.5':
-    resolution: {integrity: sha512-KPWR8gcodSIw8txfJ+KbgF5NoL7CxX0AljHiJk1VWDiClrN94jYmF5iGCFgaDraOBV9jJhpIIwPOfu09ild8eA==}
+  '@rsbuild/core@2.0.9':
+    resolution: {integrity: sha512-lK2bMNuwh3TuLXLskS7nG3fnQk+6eaLeeZiquJWcna4JZx9iaI59JSd+iLcg5TeZLjEVygkwn/HcE+yuYDQRAw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+    peerDependencies:
+      core-js: '>= 3.0.0'
+    peerDependenciesMeta:
+      core-js:
+        optional: true
+
+  '@rslib/core@0.22.0':
+    resolution: {integrity: sha512-DGTMBDTSdILac0SmeBWvdYf/ZDn09vXgbJQ3/N1J7i6vBpFGWCCKjARoz1R5jYqr1Z9tLJ1OfOVZktbNY/XXuA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -375,18 +385,18 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@rstest/adapter-rslib@0.10.2':
-    resolution: {integrity: sha512-lAF+f/nUdZGcP3UB7vOS9PFWgzoVO0C08/8wUzs8o64q1ZeEFaY0lWyhuiRrXNdjLnH/Kf3igv4dLEBufEtH4A==}
+  '@rstest/adapter-rslib@0.10.3':
+    resolution: {integrity: sha512-AuK+NFUKxk8Ijc2Op5wNDJC0zQCQoEh41RTtWzTSK4NrHF9joB0rj/fwRGzehGSwmmd4pMe1btuLe9QfYJX1bQ==}
     peerDependencies:
       '@rslib/core': '>=0.18.6'
-      '@rstest/core': ^0.10.2
+      '@rstest/core': ^0.10.3
       typescript: ^5 || ^6
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@rstest/core@0.10.2':
-    resolution: {integrity: sha512-2nadZIrCBJL8AicSLcU0O0G2wo98QXmlsy3yX4ShiLFDlfQAzPgZJYzR6ssqQhVCMx/dIIFifyNiYsGWWWsrXg==}
+  '@rstest/core@0.10.3':
+    resolution: {integrity: sha512-UiJ1td7KszgAfPVroNKnQQ60S0EeyHdPZArng08ffMMCmwo/6aeLmjk4s+W/ojR5iredelM9Z0Yc01vN3kSaeA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -398,10 +408,10 @@ packages:
       jsdom:
         optional: true
 
-  '@rstest/coverage-istanbul@0.10.2':
-    resolution: {integrity: sha512-PWgXviLBg8WRVC8B2OCOZvxAfGR55crYgHx8Chd62gr9w89d2QoPuNaJglGSaauyMSJ/wfWU7K4+H5bHupD7yQ==}
+  '@rstest/coverage-istanbul@0.10.3':
+    resolution: {integrity: sha512-CpnPZzHn8t5fmJobdsslK7oCJ5Si4mLA+5TCBjWGEy8C5t8ueIQX4NZVatM/zj30hv/1r7GCVRQqh2MRpPeSVA==}
     peerDependencies:
-      '@rstest/core': ^0.10.2
+      '@rstest/core': ^0.10.3
 
   '@rushstack/node-core-library@5.23.1':
     resolution: {integrity: sha512-wlKmIKIYCKuCASbITvOxLZXepPbwXvrv7S6ig6XNWFchSyhL/E2txmVXspHY49Wu2dzf7nI27a2k/yV5BA3EiA==}
@@ -496,9 +506,6 @@ packages:
     resolution: {integrity: sha512-+W/5efTR7y5HRD7gACw9yQjqMVvEMLBHmboM/kPWam+H+Hmyrgjh6YncVKK122YZkXrLudzTuAukUw9FnMf7IQ==}
     engines: {node: 10.* || >= 12.*}
 
-  core-js@3.47.0:
-    resolution: {integrity: sha512-c3Q2VVkGAUyupsjRnaNX6u8Dq2vAdzm9iuPj5FW0fRxzlxgq9Q39MDq10IvmQSpLgHQNyQzQmOo6bgGHmH3NNg==}
-
   debug@4.4.1:
     resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
     engines: {node: '>=6.0'}
@@ -534,8 +541,8 @@ packages:
       picomatch:
         optional: true
 
-  fflate@0.8.2:
-    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+  fflate@0.8.3:
+    resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
 
   fs-extra@11.3.1:
     resolution: {integrity: sha512-eXvGGwZ5CL17ZSwHWd3bbgk7UUpF6IFHtP57NYYakPvHOs8GDgDe5KJI36jIJzDkJ6eJjuzRA8eBQb6SkKue0g==}
@@ -590,10 +597,6 @@ packages:
   istanbul-reports@3.2.0:
     resolution: {integrity: sha512-HGYWWS/ehqTV3xN10i23tkPkpH46MLCIMFNCaaKNavAXTF1RkqxawEPtnjnGZ6XKSInBKkiOA5BKS+aZiY3AvA==}
     engines: {node: '>=8'}
-
-  jiti@2.6.1:
-    resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
-    hasBin: true
 
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
@@ -655,8 +658,8 @@ packages:
     engines: {node: '>= 0.4'}
     hasBin: true
 
-  rsbuild-plugin-dts@0.21.5:
-    resolution: {integrity: sha512-tRSqSCmaY2Ef/FTxcLUw26jQxM/HJHAFqTsqngXnXnfic0BHlSCKzJuwjGoGUYimb3RdH6qnC7jzkXuoe+ZXOA==}
+  rsbuild-plugin-dts@0.22.0:
+    resolution: {integrity: sha512-Oyiu5oJDHWOnBv7yRr8eAGfoEddwxfPqUbAX6HvcJxrnR/h6Zd0VgTBWVTgqALYhLcL2ZdyZ2vwnqfhan4krwA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@microsoft/api-extractor': ^7
@@ -682,11 +685,6 @@ packages:
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
-
-  semver@7.7.2:
-    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
-    engines: {node: '>=10'}
-    hasBin: true
 
   semver@7.7.4:
     resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
@@ -727,8 +725,8 @@ packages:
   swc-plugin-coverage-instrument@0.0.32:
     resolution: {integrity: sha512-KsO1xNQdcVb331Rm98Op6uYf36/CYdF1kILQxOddmtCNlRLISpCUqHcnogu+QgELZvG48oie+w0fzS8uktjcEA==}
 
-  tinyexec@1.2.2:
-    resolution: {integrity: sha512-M/Q0B2cp4K7kynaT/vnED1j8TlLY+Pp7C6Wl2bl/7u/F0mUVwdyOpwomQb8JpYLitHUssAJRmLZdMCGsrx7i+g==}
+  tinyexec@1.2.3:
+    resolution: {integrity: sha512-g62dB+w1/OEFnPvmX0yd/HnetYITOL+1nJW7kitOycOeAvmbWC/nu0fwmmQ/kupNojqExzyC/T++pST/jRJ2mQ==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.15:
@@ -768,14 +766,14 @@ snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/core@0.18.2':
+  '@arethetypeswrong/core@0.18.3':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.4
       cjs-module-lexer: 1.4.3
-      fflate: 0.8.2
+      fflate: 0.8.3
       lru-cache: 11.1.0
-      semver: 7.7.2
+      semver: 7.7.4
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
 
@@ -929,19 +927,24 @@ snapshots:
 
   '@publint/pack@0.1.3': {}
 
-  '@rsbuild/core@2.0.8(core-js@3.47.0)':
+  '@rsbuild/core@2.0.8':
     dependencies:
       '@rspack/core': 2.0.5(@swc/helpers@0.5.23)
       '@swc/helpers': 0.5.23
-    optionalDependencies:
-      core-js: 3.47.0
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
 
-  '@rslib/core@0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(core-js@3.47.0)(typescript@6.0.3)':
+  '@rsbuild/core@2.0.9':
     dependencies:
-      '@rsbuild/core': 2.0.8(core-js@3.47.0)
-      rsbuild-plugin-dts: 0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(@rsbuild/core@2.0.8(core-js@3.47.0))(typescript@6.0.3)
+      '@rspack/core': 2.0.5(@swc/helpers@0.5.23)
+      '@swc/helpers': 0.5.23
+    transitivePeerDependencies:
+      - '@module-federation/runtime-tools'
+
+  '@rslib/core@0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(typescript@6.0.3)':
+    dependencies:
+      '@rsbuild/core': 2.0.8
+      rsbuild-plugin-dts: 0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(@rsbuild/core@2.0.8)(typescript@6.0.3)
     optionalDependencies:
       '@microsoft/api-extractor': 7.58.7(@types/node@24.12.4)
       typescript: 6.0.3
@@ -950,7 +953,7 @@ snapshots:
       - '@typescript/native-preview'
       - core-js
 
-  '@rslint/core@0.5.3(jiti@2.6.1)':
+  '@rslint/core@0.5.3':
     dependencies:
       picomatch: 4.0.4
       tinyglobby: 0.2.15
@@ -961,7 +964,6 @@ snapshots:
       '@rslint/linux-x64': 0.5.3
       '@rslint/win32-arm64': 0.5.3
       '@rslint/win32-x64': 0.5.3
-      jiti: 2.6.1
 
   '@rslint/darwin-arm64@0.5.3':
     optional: true
@@ -1034,24 +1036,24 @@ snapshots:
     optionalDependencies:
       '@swc/helpers': 0.5.23
 
-  '@rstest/adapter-rslib@0.10.2(@rslib/core@0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(core-js@3.47.0)(typescript@6.0.3))(@rstest/core@0.10.2(core-js@3.47.0))(typescript@6.0.3)':
+  '@rstest/adapter-rslib@0.10.3(@rslib/core@0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(typescript@6.0.3))(@rstest/core@0.10.3)(typescript@6.0.3)':
     dependencies:
-      '@rslib/core': 0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(core-js@3.47.0)(typescript@6.0.3)
-      '@rstest/core': 0.10.2(core-js@3.47.0)
+      '@rslib/core': 0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(typescript@6.0.3)
+      '@rstest/core': 0.10.3
     optionalDependencies:
       typescript: 6.0.3
 
-  '@rstest/core@0.10.2(core-js@3.47.0)':
+  '@rstest/core@0.10.3':
     dependencies:
-      '@rsbuild/core': 2.0.8(core-js@3.47.0)
+      '@rsbuild/core': 2.0.8
       '@types/chai': 5.2.3
     transitivePeerDependencies:
       - '@module-federation/runtime-tools'
       - core-js
 
-  '@rstest/coverage-istanbul@0.10.2(@rstest/core@0.10.2(core-js@3.47.0))':
+  '@rstest/coverage-istanbul@0.10.3(@rstest/core@0.10.3)':
     dependencies:
-      '@rstest/core': 0.10.2(core-js@3.47.0)
+      '@rstest/core': 0.10.3
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-report: 3.0.1
       istanbul-lib-source-maps: 5.0.6
@@ -1158,9 +1160,6 @@ snapshots:
     optionalDependencies:
       '@colors/colors': 1.5.0
 
-  core-js@3.47.0:
-    optional: true
-
   debug@4.4.1:
     dependencies:
       ms: 2.1.3
@@ -1191,7 +1190,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.4
 
-  fflate@0.8.2: {}
+  fflate@0.8.3: {}
 
   fs-extra@11.3.1:
     dependencies:
@@ -1242,9 +1241,6 @@ snapshots:
       html-escaper: 2.0.2
       istanbul-lib-report: 3.0.1
 
-  jiti@2.6.1:
-    optional: true
-
   jju@1.4.0: {}
 
   json-schema-traverse@1.0.0: {}
@@ -1259,7 +1255,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.4
 
   minimatch@10.2.3:
     dependencies:
@@ -1294,26 +1290,24 @@ snapshots:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  rsbuild-plugin-dts@0.21.5(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(@rsbuild/core@2.0.8(core-js@3.47.0))(typescript@6.0.3):
+  rsbuild-plugin-dts@0.22.0(@microsoft/api-extractor@7.58.7(@types/node@24.12.4))(@rsbuild/core@2.0.8)(typescript@6.0.3):
     dependencies:
       '@ast-grep/napi': 0.37.0
-      '@rsbuild/core': 2.0.8(core-js@3.47.0)
+      '@rsbuild/core': 2.0.8
     optionalDependencies:
       '@microsoft/api-extractor': 7.58.7(@types/node@24.12.4)
       typescript: 6.0.3
 
-  rsbuild-plugin-publint@0.3.4(@rsbuild/core@2.0.8(core-js@3.47.0)):
+  rsbuild-plugin-publint@0.3.4(@rsbuild/core@2.0.9):
     dependencies:
       picocolors: 1.1.1
       publint: 0.3.17
     optionalDependencies:
-      '@rsbuild/core': 2.0.8(core-js@3.47.0)
+      '@rsbuild/core': 2.0.9
 
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
-
-  semver@7.7.2: {}
 
   semver@7.7.4: {}
 
@@ -1345,7 +1339,7 @@ snapshots:
 
   swc-plugin-coverage-instrument@0.0.32: {}
 
-  tinyexec@1.2.2: {}
+  tinyexec@1.2.3: {}
 
   tinyglobby@0.2.15:
     dependencies:
