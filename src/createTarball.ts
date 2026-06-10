@@ -26,7 +26,7 @@ export async function createTarball(
         return ["yarn", ["pack", "--filename", tarballPath]];
       case "yarn@berry":
         // https://yarnpkg.com/cli/pack
-        return ["yarn", ["pack", "--out", tarballPath]];
+        return ["corepack", ["yarn", "pack", "--out", tarballPath]];
       case "pnpm":
       case "pnpm@6":
         return ["pnpm", ["pack"]];
