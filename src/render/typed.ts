@@ -83,6 +83,7 @@ export function renderTyped(
         // Links (e.g., [text](url)) -> text (url)
         // Using negative lookbehind to avoid matching ANSI escape sequences like \x1b[36m
         .replace(
+          // rslint-disable-next-line no-control-regex
           /(?<!\x1b)\[([^\]]+)\]\(([^)]+)\)/g,
           (_: string, text: string, url: string) =>
             `${styleText("bold", text)} (${styleText("blue", styleText("underline", url))})`,
