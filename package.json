@@ -34,21 +34,21 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.3",
-    "@microsoft/api-extractor": "^7.58.7",
-    "@rsbuild/core": "2.0.9",
-    "@rslib/core": "^0.22.0",
+    "@microsoft/api-extractor": "^7.58.9",
+    "@rsbuild/core": "2.0.15",
+    "@rslib/core": "^0.22.1",
     "@rslint/core": "^0.6.1",
-    "@rstest/adapter-rslib": "^0.10.3",
-    "@rstest/core": "^0.10.3",
-    "@rstest/coverage-istanbul": "^0.10.3",
-    "@types/node": "^24.12.4",
+    "@rstest/adapter-rslib": "^0.10.4",
+    "@rstest/core": "^0.10.4",
+    "@rstest/coverage-istanbul": "^0.10.4",
+    "@types/node": "^24.13.2",
     "cli-table3": "^0.6.5",
     "dprint": "^0.54.0",
     "husky": "^9.1.7",
     "nano-staged": "^1.0.2",
     "package-manager-detector": "^1.6.0",
     "rsbuild-plugin-publint": "^1.0.0",
-    "tinyexec": "^1.2.3",
+    "tinyexec": "^1.2.4",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
@@ -60,7 +60,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.5.0",
+  "packageManager": "pnpm@11.6.0",
   "engines": {
     "node": ">=20.20.2"
   },
