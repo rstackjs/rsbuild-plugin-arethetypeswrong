@@ -6,5 +6,5 @@
   "files": [
     "src/*"
   ],
-  "packageManager": "npm@10.9.8+sha512.7d8c1be8e0d298792aac9410682c58dccda53dffe6a600bb8a4d074b3cc8c06e421ad69b469e1b36a8a46adbc2a13e366f920d412aae7551f447bc95982f6156"
+  "packageManager": "npm@11.18.0+sha512.4faecce0be70366d1c67b1012c4adc1246354a6cc45bf589f92003073b05518d547403df1475c542d67a4845e22b4fafcd7cac0af02c7a96cc6814f09eb003fb"
 }
