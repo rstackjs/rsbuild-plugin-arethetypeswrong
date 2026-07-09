@@ -9,7 +9,7 @@ minimumReleaseAgeExclude:
   - "@rsbuild/*"
 
   - typescript
-  - '@typescript/*'
+  - "@typescript/*"
 allowBuilds:
   core-js: false
   dprint: true
