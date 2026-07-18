@@ -5,10 +5,17 @@ optimisticRepeatInstall: true
 strictDepBuilds: true
 
 minimumReleaseAgeExclude:
-  - "@rspack/*"
   - "@rsbuild/*"
-  - typescript
+  - "@rslib/*"
+  - "@rslint/*"
+  - "@rspack/*"
+  - "@rspress/*"
+  - "@rstackjs/*"
+  - "@rstest/*"
   - "@typescript/*"
+  - "rsbuild-plugin-*"
+  - rstack
+  - typescript
 
 allowBuilds:
   core-js: false
