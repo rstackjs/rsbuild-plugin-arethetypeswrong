@@ -37,7 +37,7 @@
     "@microsoft/api-extractor": "^7.58.12",
     "@rsbuild/core": "2.1.9",
     "@rslib/core": "^0.23.2",
-    "@rslint/core": "^0.7.2",
+    "@rslint/core": "^0.8.0",
     "@rstest/adapter-rslib": "^0.11.5",
     "@rstest/core": "^0.11.5",
     "@rstest/coverage-istanbul": "^0.11.5",
