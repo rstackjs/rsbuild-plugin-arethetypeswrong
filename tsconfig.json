@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "erasableSyntaxOnly": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": true
   },
-  "include": ["src"],
+  "include": ["src"]
 }

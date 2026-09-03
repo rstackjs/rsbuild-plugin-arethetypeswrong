@@ -1,8 +1,8 @@
-import fs from "node:fs/promises";
-import path from "node:path";
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-import { detect } from "package-manager-detector";
-import { x } from "tinyexec";
+import { detect } from 'package-manager-detector';
+import { x } from 'tinyexec';
 
 interface Result extends AsyncDisposable {
   path: string;
@@ -19,23 +19,23 @@ export async function createTarball(
 
   const detectResult = await detect({ cwd: root });
 
-  const [command, args] = (function(): [string, string[]] {
+  const [command, args] = (function (): [string, string[]] {
     switch (detectResult?.agent) {
-      case "yarn":
+      case 'yarn':
         // https://classic.yarnpkg.com/lang/en/docs/cli/pack/
-        return ["yarn", ["pack", "--filename", tarballPath]];
-      case "yarn@berry":
+        return ['yarn', ['pack', '--filename', tarballPath]];
+      case 'yarn@berry':
         // https://yarnpkg.com/cli/pack
-        return ["corepack", ["yarn", "pack", "--out", tarballPath]];
-      case "pnpm":
-      case "pnpm@6":
-        return ["pnpm", ["pack"]];
-      case "npm":
-      case "bun":
-      case "deno":
+        return ['corepack', ['yarn', 'pack', '--out', tarballPath]];
+      case 'pnpm':
+      case 'pnpm@6':
+        return ['pnpm', ['pack']];
+      case 'npm':
+      case 'bun':
+      case 'deno':
       case undefined:
       default:
-        return ["npm", ["pack"]];
+        return ['npm', ['pack']];
     }
   })();
 
@@ -59,5 +59,5 @@ export async function createTarball(
 }
 
 function normalizeNpmPackageName(name: string): string {
-  return name.replaceAll("@", "").replaceAll("/", "-");
+  return name.replaceAll('@', '').replaceAll('/', '-');
 }

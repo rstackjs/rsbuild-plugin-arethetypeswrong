@@ -1,8 +1,8 @@
-import type { CheckResult, ResolutionKind } from "@arethetypeswrong/core";
+import type { CheckResult, ResolutionKind } from '@arethetypeswrong/core';
 
-import type { ProblemFlag } from "../problemUtils.js";
-import { renderTyped } from "./typed.js";
-import { renderUntyped } from "./untyped.js";
+import type { ProblemFlag } from '../problemUtils.js';
+import { renderTyped } from './typed.js';
+import { renderUntyped } from './untyped.js';
 
 export function render(analysis: CheckResult, options: RenderOptions): string {
   if (analysis.types) {

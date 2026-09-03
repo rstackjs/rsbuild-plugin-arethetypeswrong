@@ -1,17 +1,17 @@
-import { existsSync } from "node:fs";
-import path from "node:path";
-import { stripVTControlCharacters } from "node:util";
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { stripVTControlCharacters } from 'node:util';
 
-import { createRsbuild, logger } from "@rsbuild/core";
-import { beforeEach, expect, rs, test } from "@rstest/core";
+import { createRsbuild, logger } from '@rsbuild/core';
+import { beforeEach, expect, rs, test } from 'rstack/test';
 
-import { pluginAreTheTypesWrong } from "../../src";
+import { pluginAreTheTypesWrong } from '../../src';
 
 beforeEach(() => {
   rs.restoreAllMocks();
 });
 
-test("should pass when no issues found", async () => {
+test('should pass when no issues found', async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
@@ -19,89 +19,110 @@ test("should pass when no issues found", async () => {
     },
   });
 
-  const error = rs.spyOn(logger, "error");
+  const error = rs.spyOn(logger, 'error');
 
-  await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: arethetypeswrong failed!]`);
+  await expect(rsbuild.build()).rejects.toThrowErrorMatchingInlineSnapshot(
+    `[Error: arethetypeswrong failed!]`,
+  );
 
   expect(
-    error.mock.calls.flatMap(call =>
+    error.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-cjs-only-exports-default-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(
+      path.join(import.meta.dirname, 'test-cjs-only-exports-default-0.0.0.tgz'),
+    ),
+  ).toBeFalsy();
 });
 
-test("should be able to ignore resolution node16-esm and bundler", async () => {
+test('should be able to ignore resolution node16-esm and bundler', async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
       plugins: [
         pluginAreTheTypesWrong({
           areTheTypesWrongOptions: {
-            ignoreResolutions: [
-              "bundler",
-              "node16-esm",
-            ],
+            ignoreResolutions: ['bundler', 'node16-esm'],
           },
         }),
       ],
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(
-    success.mock.calls.flatMap(call =>
+    success.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-cjs-only-exports-default-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(
+      path.join(import.meta.dirname, 'test-cjs-only-exports-default-0.0.0.tgz'),
+    ),
+  ).toBeFalsy();
 
   await close();
 });
 
-test("should be able to ignore rule cjs-only-exports-default", async () => {
+test('should be able to ignore rule cjs-only-exports-default', async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
       plugins: [
         pluginAreTheTypesWrong({
           areTheTypesWrongOptions: {
-            ignoreRules: [
-              "cjs-only-exports-default",
-            ],
+            ignoreRules: ['cjs-only-exports-default'],
           },
         }),
       ],
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(
-    success.mock.calls.flatMap(call =>
+    success.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-cjs-only-exports-default-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(
+      path.join(import.meta.dirname, 'test-cjs-only-exports-default-0.0.0.tgz'),
+    ),
+  ).toBeFalsy();
 
   await close();
 });
 
-test("should not throw when enable: false", async () => {
+test('should not throw when enable: false', async () => {
   const rsbuild = await createRsbuild({
     cwd: import.meta.dirname,
     rsbuildConfig: {
@@ -113,13 +134,17 @@ test("should not throw when enable: false", async () => {
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(success).not.toBeCalled();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-cjs-only-exports-default-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(
+      path.join(import.meta.dirname, 'test-cjs-only-exports-default-0.0.0.tgz'),
+    ),
+  ).toBeFalsy();
 
   await close();
 });

@@ -9,35 +9,42 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import type { CheckResult } from "@arethetypeswrong/core";
-import { problemAffectsResolutionKind } from "@arethetypeswrong/core/problems";
-import { allResolutionKinds } from "@arethetypeswrong/core/utils";
-import { problemFlags } from "./problemUtils.js";
-import type { RenderOptions } from "./render/index.js";
+import type { CheckResult } from '@arethetypeswrong/core';
+import { problemAffectsResolutionKind } from '@arethetypeswrong/core/problems';
+import { allResolutionKinds } from '@arethetypeswrong/core/utils';
+import { problemFlags } from './problemUtils.js';
+import type { RenderOptions } from './render/index.js';
 
-export function getExitCode(analysis: CheckResult, opts?: RenderOptions): 0 | 1 {
+export function getExitCode(
+  analysis: CheckResult,
+  opts?: RenderOptions,
+): 0 | 1 {
   if (!analysis.types) {
     return 1;
   }
   const ignoreRules = opts?.ignoreRules ?? [];
   const ignoreResolutions = opts?.ignoreResolutions ?? [];
   return analysis.problems.some((problem) => {
-      const notRuleIgnored = !ignoreRules.includes(problemFlags[problem.kind]);
-      if (!notRuleIgnored) {
-        return false;
-      }
+    const notRuleIgnored = !ignoreRules.includes(problemFlags[problem.kind]);
+    if (!notRuleIgnored) {
+      return false;
+    }
 
-      const affectedKinds = allResolutionKinds.filter(rk => problemAffectsResolutionKind(problem, rk, analysis));
+    const affectedKinds = allResolutionKinds.filter((rk) =>
+      problemAffectsResolutionKind(problem, rk, analysis),
+    );
 
-      /* v8 ignore next */
-      /* istanbul ignore next */
-      if (affectedKinds.length === 0) {
-        return true;
-      }
+    /* v8 ignore next */
+    /* istanbul ignore next */
+    if (affectedKinds.length === 0) {
+      return true;
+    }
 
-      const notResolutionIgnored = affectedKinds.some(rk => !ignoreResolutions.includes(rk));
-      return notResolutionIgnored;
-    })
+    const notResolutionIgnored = affectedKinds.some(
+      (rk) => !ignoreResolutions.includes(rk),
+    );
+    return notResolutionIgnored;
+  })
     ? 1
     : 0;
 }

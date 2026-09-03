@@ -1,9 +1,9 @@
-import fs from "node:fs";
-import path from "node:path";
+import fs from 'node:fs';
+import path from 'node:path';
 
-import { logger, type RsbuildPlugin } from "@rsbuild/core";
+import { logger, type RsbuildPlugin } from '@rsbuild/core';
 
-import type { RenderOptions } from "./render/index.js";
+import type { RenderOptions } from './render/index.js';
 
 export interface PluginAreTheTypesWrongOptions {
   /**
@@ -18,7 +18,7 @@ export interface PluginAreTheTypesWrongOptions {
 export const pluginAreTheTypesWrong = (
   options: PluginAreTheTypesWrongOptions = {},
 ): RsbuildPlugin => ({
-  name: "plugin-arethetypeswrong",
+  name: 'plugin-arethetypeswrong',
 
   setup(api) {
     if (options.enable === false) {
@@ -38,28 +38,31 @@ export const pluginAreTheTypesWrong = (
 
         // Read package.json to get package name and version
         const packageJson = JSON.parse(
-          fs.readFileSync(path.join(rootPath, "package.json"), "utf-8"),
+          fs.readFileSync(path.join(rootPath, 'package.json'), 'utf-8'),
         ) as { name: string; version: string };
         const packageName = packageJson.name;
         const packageVersion = packageJson.version;
 
-        logger.start(`[arethetypeswrong] Checking ${packageName}@${packageVersion}...`);
-        logger.info("");
+        logger.start(
+          `[arethetypeswrong] Checking ${packageName}@${packageVersion}...`,
+        );
+        logger.info('');
 
         logger.debug(`[arethetypeswrong] Running npm pack from ${rootPath}`);
-        const { createTarball } = await import("./createTarball.js");
+        const { createTarball } = await import('./createTarball.js');
         await using tarball = await createTarball(rootPath, packageJson);
         logger.debug(`[arethetypeswrong] npm pack success`);
 
-        const { checkPackage, createPackageFromTarballData } = await import("@arethetypeswrong/core");
+        const { checkPackage, createPackageFromTarballData } =
+          await import('@arethetypeswrong/core');
         const pkg = createPackageFromTarballData(fs.readFileSync(tarball.path));
         const result = await checkPackage(pkg);
 
-        const { render } = await import("./render/index.js");
+        const { render } = await import('./render/index.js');
 
         const message = render(result, options.areTheTypesWrongOptions ?? {});
 
-        const { getExitCode } = await import("./getExitCode.js");
+        const { getExitCode } = await import('./getExitCode.js');
 
         const exitCode = getExitCode(result, options.areTheTypesWrongOptions);
         const hasErrors = exitCode !== 0;
@@ -68,7 +71,7 @@ export const pluginAreTheTypesWrong = (
           /* v8 ignore next */
           /* istanbul ignore next */
           if (!isWatch) {
-            throw new Error("arethetypeswrong failed!");
+            throw new Error('arethetypeswrong failed!');
           }
           /* v8 ignore next */
           /* istanbul ignore next */
@@ -76,7 +79,7 @@ export const pluginAreTheTypesWrong = (
         }
         logger.success(message);
       },
-      order: "post",
+      order: 'post',
     });
   },
 });
