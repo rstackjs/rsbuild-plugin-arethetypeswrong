@@ -25,7 +25,7 @@ npm add rsbuild-plugin-arethetypeswrong -D
 Add plugin to your `rslib.config.ts` or `rsbuild.config.ts`:
 
 ```ts
-import { pluginAreTheTypesWrong } from "rsbuild-plugin-arethetypeswrong";
+import { pluginAreTheTypesWrong } from 'rsbuild-plugin-arethetypeswrong';
 
 export default {
   plugins: [pluginAreTheTypesWrong()],
@@ -64,20 +64,20 @@ interface areTheTypesWrongOptions {
 }
 
 type ProblemFlag =
-  | "no-resolution"
-  | "untyped-resolution"
-  | "false-cjs"
-  | "false-esm"
-  | "cjs-resolves-to-esm"
-  | "fallback-condition"
-  | "cjs-only-exports-default"
-  | "named-exports"
-  | "false-export-default"
-  | "missing-export-equals"
-  | "unexpected-module-syntax"
-  | "internal-resolution-error";
+  | 'no-resolution'
+  | 'untyped-resolution'
+  | 'false-cjs'
+  | 'false-esm'
+  | 'cjs-resolves-to-esm'
+  | 'fallback-condition'
+  | 'cjs-only-exports-default'
+  | 'named-exports'
+  | 'false-export-default'
+  | 'missing-export-equals'
+  | 'unexpected-module-syntax'
+  | 'internal-resolution-error';
 
-type ResolutionKind = "node10" | "node16-cjs" | "node16-esm" | "bundler";
+type ResolutionKind = 'node10' | 'node16-cjs' | 'node16-esm' | 'bundler';
 ```
 
 - Default:
@@ -96,8 +96,8 @@ const defaultOptions = {
 ```js
 pluginAreTheTypesWrong({
   areTheTypesWrongOptions: {
-    ignoreRules: ["false-cjs"],
-    ignoreResolutions: ["node16-cjs"],
+    ignoreRules: ['false-cjs'],
+    ignoreResolutions: ['node16-cjs'],
   },
 });
 ```

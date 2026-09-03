@@ -7,30 +7,30 @@ This repository contains `rsbuild-plugin-arethetypeswrong`, a plugin for checkin
 This project uses `pnpm` (version 10+) as its package manager. Always use `pnpm` instead of `npm` or `yarn`.
 
 - **Install Dependencies:** `pnpm install`
-- **Build the Plugin:** `pnpm build` (Runs `rslib build` under the hood)
+- **Build the Plugin:** `pnpm build` (Runs `rs lib` under the hood)
 
 The plugin is built as an ESM package. Pay attention to `.js` vs `.ts` extensions in internal imports. Since the project has `"type": "module"` and `moduleResolution: node16` in `tsconfig.json`, local imports in source files must include the `.js` extension (e.g., `import "./createTarball.js"`).
 
 ## 🧪 Testing
 
-We use **rstest** (`@rstest/core`) for testing. Tests are located in the `test/` directory.
+We use **Rstest** through Rstack CLI for testing. Tests are located in the `test/` directory.
 
 - **Run All Tests:** `pnpm test` (runs with coverage)
-- **Run a Single Test:** `pnpm exec rstest test/path-to-test/index.test.ts`
-- **Update Snapshots:** `pnpm exec rstest -u`
+- **Run a Single Test:** `pnpm exec rs test test/path-to-test/index.test.ts`
+- **Update Snapshots:** `pnpm exec rs test -u`
 
 **Testing Guidelines:**
 
 - Most tests are integration tests that create an Rsbuild instance with the plugin and check the output.
 - Assertions typically involve spying on `logger.success` or `logger.error`, filtering the messages for `[arethetypeswrong]`, stripping VT control characters, and running snapshot tests (`toMatchSnapshot()`).
-- Use `rs.spyOn(logger, "...")` from `@rstest/core` to capture console outputs. Ensure to clean up mocks using `rs.restoreAllMocks()` in `beforeEach()`.
+- Use `rs.spyOn(logger, "...")` from `rstack/test` to capture console outputs. Ensure to clean up mocks using `rs.restoreAllMocks()` in `beforeEach()`.
 
 ## 🧹 Linting & Formatting
 
-- **Linting:** We use `rslint` (powered by `@typescript-eslint` via `rslint.jsonc`).
+- **Linting:** We use Rslint through Rstack CLI.
   - Command: `pnpm lint`
-- **Formatting:** We use `dprint` for highly-performant code formatting.
-  - Command: `npx dprint fmt` (or let `nano-staged` handle it on commit)
+- **Formatting:** We use Rstack CLI's formatter.
+  - Command: `pnpm format` (or let `rs staged` handle it on commit)
 - **Code standards:** Never leave unused variables, imports, or dead code. `rslint` enforces these rules strictly.
 
 ## 🎨 Code Style & Conventions

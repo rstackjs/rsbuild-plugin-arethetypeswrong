@@ -1,96 +1,118 @@
-import { existsSync } from "node:fs";
-import path from "node:path";
-import { stripVTControlCharacters } from "node:util";
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { stripVTControlCharacters } from 'node:util';
 
-import { createRsbuild, logger } from "@rsbuild/core";
-import { beforeEach, expect, rs, test } from "@rstest/core";
+import { createRsbuild, logger } from '@rsbuild/core';
+import { beforeEach, expect, rs, test } from 'rstack/test';
 
-import { pluginAreTheTypesWrong } from "../../src";
+import { pluginAreTheTypesWrong } from '../../src';
 
 beforeEach(() => {
   rs.restoreAllMocks();
 });
 
-test("should run arethetypeswrong as expected", async () => {
+test('should run arethetypeswrong as expected', async () => {
   const rsbuild = await createRsbuild({
-    cwd: path.join(import.meta.dirname, "foo"),
+    cwd: path.join(import.meta.dirname, 'foo'),
     rsbuildConfig: {
       plugins: [pluginAreTheTypesWrong()],
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(
-    success.mock.calls.flatMap(call =>
+    success.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-pnpm-foo-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(path.join(import.meta.dirname, 'test-pnpm-foo-0.0.0.tgz')),
+  ).toBeFalsy();
 
   await close();
 });
 
-test("should run arethetypeswrong without emoji", async () => {
+test('should run arethetypeswrong without emoji', async () => {
   const rsbuild = await createRsbuild({
-    cwd: path.join(import.meta.dirname, "foo"),
+    cwd: path.join(import.meta.dirname, 'foo'),
     rsbuildConfig: {
-      plugins: [pluginAreTheTypesWrong({
-        areTheTypesWrongOptions: {
-          emoji: false,
-        },
-      })],
+      plugins: [
+        pluginAreTheTypesWrong({
+          areTheTypesWrongOptions: {
+            emoji: false,
+          },
+        }),
+      ],
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(
-    success.mock.calls.flatMap(call =>
+    success.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-pnpm-foo-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(path.join(import.meta.dirname, 'test-pnpm-foo-0.0.0.tgz')),
+  ).toBeFalsy();
 
   await close();
 });
 
-test("should run arethetypeswrong without summary", async () => {
+test('should run arethetypeswrong without summary', async () => {
   const rsbuild = await createRsbuild({
-    cwd: path.join(import.meta.dirname, "foo"),
+    cwd: path.join(import.meta.dirname, 'foo'),
     rsbuildConfig: {
-      plugins: [pluginAreTheTypesWrong({
-        areTheTypesWrongOptions: {
-          emoji: false,
-          summary: false,
-        },
-      })],
+      plugins: [
+        pluginAreTheTypesWrong({
+          areTheTypesWrongOptions: {
+            emoji: false,
+            summary: false,
+          },
+        }),
+      ],
     },
   });
 
-  const success = rs.spyOn(logger, "success");
+  const success = rs.spyOn(logger, 'success');
 
   const { close } = await rsbuild.build();
 
   expect(
-    success.mock.calls.flatMap(call =>
+    success.mock.calls.flatMap((call) =>
       call
-        .filter(message => typeof message === "string" && message.includes("[arethetypeswrong]"))
-        .map(stripVTControlCharacters)
+        .filter(
+          (message) =>
+            typeof message === 'string' &&
+            message.includes('[arethetypeswrong]'),
+        )
+        .map(stripVTControlCharacters),
     ),
   ).toMatchSnapshot();
 
-  expect(existsSync(path.join(import.meta.dirname, "test-pnpm-foo-0.0.0.tgz"))).toBeFalsy();
+  expect(
+    existsSync(path.join(import.meta.dirname, 'test-pnpm-foo-0.0.0.tgz')),
+  ).toBeFalsy();
 
   await close();
 });

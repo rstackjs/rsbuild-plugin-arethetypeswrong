@@ -35,13 +35,10 @@ jobs:
           run_install: true
 
       - name: Build
-        run: pnpm build
+        run: node --run build
 
-      - name: Format check
-        uses: dprint/check@9cb3a2b17a8e606d37aae341e49df3654933fc23 # v2.3
-
-      - name: Run Lint
-        run: pnpm run lint
+      - name: Run Check
+        run: node --run check
 
   test:
     runs-on: ${{ matrix.os }}
@@ -68,7 +65,7 @@ jobs:
           run_install: true
 
       - name: Build
-        run: pnpm build
+        run: node --run build
 
       - name: Run Test
-        run: pnpm run test --test-timeout=30000
+        run: node --run test -- --test-timeout=30000
