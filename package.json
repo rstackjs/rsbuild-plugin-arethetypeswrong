@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-plugin-arethetypeswrong",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rstackjs/rsbuild-plugin-arethetypeswrong.git"
